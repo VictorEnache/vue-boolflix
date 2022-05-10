@@ -72,7 +72,6 @@ export default {
             `https://api.themoviedb.org/3/movie/${array_originale[i].id}?api_key=588a2090952cc5fe4696e9b998b79992`
           )
           .then((oggetto) => {
-            
             nuovo_array.push(oggetto.data);
           })
           .catch((error) => {
@@ -90,6 +89,7 @@ export default {
             `https://api.themoviedb.org/3/search/movie?api_key=588a2090952cc5fe4696e9b998b79992&query=${this.search}`
           )
           .then((oggetto) => {
+              this.films=[]
             this.callId(oggetto.data.results, this.films);
           });
         /* serie_tv */
@@ -98,6 +98,7 @@ export default {
             `https://api.themoviedb.org/3/search/tv?api_key=588a2090952cc5fe4696e9b998b79992&query=${this.search}`
           )
           .then((oggetto) => {
+              this.serie_tv = []
             console.log(oggetto.data.results);
             this.callId(oggetto.data.results, this.serie_tv);
           });
