@@ -72,7 +72,7 @@ export default {
             `https://api.themoviedb.org/3/movie/${array_originale[i].id}?api_key=588a2090952cc5fe4696e9b998b79992`
           )
           .then((oggetto) => {
-            nuovo_array = []
+            
             nuovo_array.push(oggetto.data);
           })
           .catch((error) => {
