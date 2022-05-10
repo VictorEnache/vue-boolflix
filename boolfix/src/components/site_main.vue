@@ -65,19 +65,15 @@ export default {
   },
 
   methods: {
-    callId(array_originale, nuovo_array) {
+    callId(array_originale, nuovo_array,prefisso_url) {
       for (let i = 0; i < array_originale.length; i++) {
         axios
           .get(
-            `https://api.themoviedb.org/3/movie/${array_originale[i].id}?api_key=588a2090952cc5fe4696e9b998b79992`
+            `${prefisso_url}${array_originale[i].id}?api_key=588a2090952cc5fe4696e9b998b79992`
           )
           .then((oggetto) => {
             nuovo_array.push(oggetto.data);
           })
-          .catch((error) => {
-            console.log(error);
-            nuovo_array.push(array_originale[i]);
-          });
       }
     },
 
@@ -90,7 +86,7 @@ export default {
           )
           .then((oggetto) => {
               this.films=[]
-            this.callId(oggetto.data.results, this.films);
+            this.callId(oggetto.data.results, this.films,'https://api.themoviedb.org/3/movie/');
           });
         /* serie_tv */
         axios
@@ -100,7 +96,7 @@ export default {
           .then((oggetto) => {
               this.serie_tv = []
             console.log(oggetto.data.results);
-            this.callId(oggetto.data.results, this.serie_tv);
+            this.callId(oggetto.data.results, this.serie_tv,'https://api.themoviedb.org/3/tv/');
           });
       }
     },
