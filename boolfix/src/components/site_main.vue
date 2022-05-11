@@ -10,66 +10,84 @@
       <div class="container">
         <ul class="row">
           <li :key="film.id" v-for="film in films" class="col">
-            <div class="image">
-              <img :src="`${base_url}${img_size}${film.poster_path}`" alt="" />
+            <div class="card">
+              <div class="image">
+                <img
+                  :src="`${base_url}${img_size}${film.poster_path}`"
+                  alt=""
+                />
+              </div>
+              <div class="informazioni">
+                <div class="titolo">
+                  {{ film.title }}
+                </div>
+                <div class="titolo_originale">
+                  {{ film.original_title }}
+                </div>
+                <div class="lingua">
+                  <img
+                    :src="`https://countryflagsapi.com/png/${film.original_language}`"
+                    alt=""
+                    @error="imgError"
+                  />
+                  <div class="text">{{ film.original_language }}</div>
+                </div>
+                <div class="voto">
+                  <!-- {{ Divisione(film.vote_average) }} -->
+                  <font-awesome-icon
+                    v-for="number in 5"
+                    :key="number"
+                    :icon="
+                      number <= Divisione(film.vote_average)
+                        ? ['fas', 'star']
+                        : ['far', 'star']
+                    "
+                  />
+                </div>
+              </div>
+              <!-- /.informazioni -->
             </div>
-            <div class="titolo">
-              {{ film.title }}
-            </div>
-            <div class="titolo_originale">
-              {{ film.original_title }}
-            </div>
-            <div class="lingua">
-              <img
-                :src="`https://countryflagsapi.com/png/${film.original_language}`"
-                alt=""
-                @error="imgError"
-              />
-              <div class="text">{{ film.original_language }}</div>
-            </div>
-            <div class="voto">
-              <!-- {{ Divisione(film.vote_average) }} -->
-              <font-awesome-icon
-                v-for="number in 5"
-                :key="number"
-                :icon="
-                  number <= Divisione(film.vote_average)
-                    ? ['fas', 'star']
-                    : ['far', 'star']
-                "
-              />
-            </div>
+            <!-- /.card -->
           </li>
 
           <li :key="serie.id" v-for="serie in serie_tv" class="col">
-            <div class="image">
-              <img :src="`${base_url}${img_size}${serie.poster_path}`" alt="" />
+            <div class="card">
+              <div class="image">
+                <img
+                  :src="`${base_url}${img_size}${serie.poster_path}`"
+                  alt=""
+                />
+              </div>
+              <div class="informazioni">
+                <div class="titolo">
+                  {{ serie.name }}
+                </div>
+                <div class="titolo_originale">
+                  {{ serie.original_name }}
+                </div>
+                <div class="lingua">
+                  <img
+                    :src="`https://countryflagsapi.com/png/${serie.original_language}`"
+                    alt=""
+                    @error="imgError"
+                  />
+                  <div class="text">{{ serie.original_language }}</div>
+                </div>
+                <div class="voto">
+                  <font-awesome-icon
+                    v-for="number in 5"
+                    :key="number"
+                    :icon="
+                      number <= Divisione(serie.vote_average)
+                        ? ['fas', 'star']
+                        : ['far', 'star']
+                    "
+                  />
+                </div>
+              </div>
+              <!-- /.informazioni -->
             </div>
-            <div class="titolo">
-              {{ serie.name }}
-            </div>
-            <div class="titolo_originale">
-              {{ serie.original_name }}
-            </div>
-            <div class="lingua">
-              <img
-                :src="`https://countryflagsapi.com/png/${serie.original_language}`"
-                alt=""
-                @error="imgError"
-              />
-              <div class="text">{{ serie.original_language }}</div>
-            </div>
-            <div class="voto">
-              <font-awesome-icon
-                v-for="number in 5"
-                :key="number"
-                :icon="
-                  number <= Divisione(serie.vote_average)
-                    ? ['fas', 'star']
-                    : ['far', 'star']
-                "
-              />
-            </div>
+            <!-- /.card -->
           </li>
         </ul>
       </div>
