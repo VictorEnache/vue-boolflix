@@ -14,3 +14,28 @@
 li{
     margin-top: 50px;
 }
+
+#site_main{
+    .container{
+        width: 1200px;
+        margin: auto;
+
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+
+            .col{
+                width: calc(100% / 4);
+
+                .lingua{
+                    width: 30px;
+
+                    img{
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+}
