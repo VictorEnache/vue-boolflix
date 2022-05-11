@@ -4,7 +4,8 @@
       <input type="text" v-model="search" @keyup.enter="callApi" />
       <button @click="callApi">cerca</button>
     </header>
-
+        <font-awesome-icon :icon='["fas", "star"]' />
+        <font-awesome-icon :icon='["far", "star"]' />
     <ul>
       <li :key="film.id" v-for="film in films">
         <div class="image">
@@ -24,8 +25,10 @@
           />
           <div class="text">{{ film.original_language }}</div>
         </div>
-        <div class="voto">
-          {{ film.vote_average }}
+        <div class="voto" >
+          <!-- {{ Divisione(film.vote_average) }} -->
+          <font-awesome-icon v-for='number in 5' :key='number' :icon='number <= Divisione(film.vote_average)?["fas", "star"]:["far", "star"]' />
+          
         </div>
       </li>
 
@@ -48,7 +51,8 @@
           <div class="text">{{ serie.original_language }}</div>
         </div>
         <div class="voto">
-          {{ serie.vote_average }}
+          {{ Divisione(serie.vote_average) }}
+          
         </div>
       </li>
     </ul>
@@ -107,6 +111,11 @@ export default {
             this.callId(oggetto.data.results, this.serie_tv,'https://api.themoviedb.org/3/tv/');
           });
       }
+    },
+
+    Divisione(numero_da_dividere){
+        let number = Math.ceil(numero_da_dividere / 2)
+        return number
     },
 
     imgError(event) {
