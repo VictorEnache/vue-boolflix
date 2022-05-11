@@ -7,6 +7,9 @@
 
     <ul>
       <li :key="film.id" v-for="film in films">
+        <div class="image">
+            <img :src="`${base_url}${img_size}${film.poster_path}`" alt="">
+        </div>
         <div class="titolo">
           {{ film.title }}
         </div>
@@ -27,6 +30,9 @@
       </li>
 
       <li :key="serie.id" v-for="serie in serie_tv">
+          <div class="image">
+              <img :src="`${base_url}${img_size}${serie.poster_path}`" alt="">
+          </div>
         <div class="titolo">
           {{ serie.name }}
         </div>
@@ -61,6 +67,8 @@ export default {
       films: [],
       serie_tv: [],
       search: "",
+      base_url: 'https://image.tmdb.org/t/p/',
+      img_size: 'w200'
     };
   },
 
