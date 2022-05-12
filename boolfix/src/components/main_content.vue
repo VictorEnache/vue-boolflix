@@ -1,11 +1,8 @@
 <template>
   <div>
     <Header :callApi='callApi' v-model="search"/>
-    <div class="placeholder" v-if="films.length === 0">
-      <h2>NON SONO PRESENTI FILM O SERIE TV DA MOSTRARE</h2>
-      <h3>Utilizza la barra di ricerca in alto</h3>
-    </div>
-    <!-- /.placeholder -->
+    <Placeholder :films='films'/>
+    
     <main id="site_main">
       <div class="container">
         <ul class="row">
@@ -119,12 +116,15 @@
 <script>
 import axios from "axios";
 import Header from './site_header.vue'
+import Placeholder from './site_placeholder.vue'
+
 
 export default {
   name: "site_main",
 
   components:{
-      Header
+      Header,
+      Placeholder
   },
 
   data() {
