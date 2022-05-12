@@ -1,11 +1,24 @@
 <template>
   <div>
     <header id="site_header">
-      <input type="text" v-model="search" @keyup.enter="callApi" />
-      <button @click="callApi">cerca</button>
+      <div class="container">
+        <div class="logo">
+          <div>BOOLFLIX</div>
+        </div>
+        <!-- /.logo -->
+        <div class="search">
+          <input type="text" placeholder="Cerca" v-model="search" @keyup.enter="callApi" />
+          <button @click="callApi">cerca</button>
+        </div>
+        <!-- /.search -->
+      </div>
     </header>
     <!-- /#site_header -->
-
+    <div class="placeholder" v-if='films.length === 0'>
+        <h2>NON SONO PRESENTI FILM O SERIE TV DA MOSTRARE</h2>
+        <h3>Utilizza la barra di ricerca in alto</h3>
+    </div>
+    <!-- /.placeholder -->
     <main id="site_main">
       <div class="container">
         <ul class="row">
@@ -19,10 +32,10 @@
               </div>
               <div class="informazioni">
                 <div class="titolo">
-                  {{ film.title }}
+                  <span>Titolo:</span> {{ film.title }}
                 </div>
-                <div class="titolo_originale">
-                  {{ film.original_title }}
+                <div class="titolo_originale" v-if='film.title !== film.original_title'>
+                  <span>Titolo Originale:</span>{{ film.original_title }}
                 </div>
                 <div class="lingua">
                   <img
@@ -60,10 +73,10 @@
               </div>
               <div class="informazioni">
                 <div class="titolo">
-                  {{ serie.name }}
+                  <span>Titolo:</span>{{ serie.name }}
                 </div>
-                <div class="titolo_originale">
-                  {{ serie.original_name }}
+                <div class="titolo_originale" v-if='serie.name !== serie.original_name'>
+                  <span>Titolo Originale:</span>{{ serie.original_name }}
                 </div>
                 <div class="lingua">
                   <img
@@ -156,6 +169,9 @@ export default {
               "https://api.themoviedb.org/3/tv/"
             );
           });
+      } else {
+          this.films = [];
+          this.serie_tv = [];
       }
     },
 
