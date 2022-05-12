@@ -7,11 +7,11 @@
       <div class="container">
         <ul class="row">
           <li :key="film.id" v-for="film in films" class="col">
-            <Card :base_url="base_url" :img_size="img_size" :film='film' :imgError="imgError" :Divisione="Divisione" :posterError="posterError" :title="film.title" :original_title='film.original_title'/>
+            <Card :film='film'   :title="film.title" :original_title='film.original_title'/>
           </li>
 
           <li :key="serie.id" v-for="serie in serie_tv" class="col">
-            <Card :base_url="base_url" :img_size="img_size" :film='serie' :imgError="imgError" :Divisione="Divisione" :posterError="posterError" :title="serie.name" :original_title='serie.original_name'/>
+            <Card :film='serie'   :title="serie.name" :original_title='serie.original_name'/>
           </li>
         </ul>
       </div>
@@ -43,8 +43,6 @@ export default {
       films: [],
       serie_tv: [],
       search: "",
-      base_url: "https://image.tmdb.org/t/p/",
-      img_size: "w200",
     };
   },
 
@@ -96,18 +94,7 @@ export default {
       }
     },
 
-    Divisione(numero_da_dividere) {
-      let number = Math.ceil(numero_da_dividere / 2);
-      return number;
-    },
 
-    imgError(event) {
-      event.target.src = require("../assets/img/flag_placeholder.png");
-    },
-
-    posterError(event) {
-        event.target.src = require("../assets/img/Movie_Placeholder.jpg");
-    }
 
 
   }
