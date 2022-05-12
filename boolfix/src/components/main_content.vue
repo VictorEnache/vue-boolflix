@@ -7,11 +7,11 @@
       <div class="container">
         <ul class="row">
           <li :key="film.id" v-for="film in films" class="col">
-            <Card :base_url="base_url" :img_size="img_size" :film='film' :imgError="imgError" :Divisione="Divisione" :posterError="posterError"/>
+            <Card :base_url="base_url" :img_size="img_size" :film='film' :imgError="imgError" :Divisione="Divisione" :posterError="posterError" :title="film.title" :original_title='film.original_title'/>
           </li>
 
           <li :key="serie.id" v-for="serie in serie_tv" class="col">
-            <Card :base_url="base_url" :img_size="img_size" :film='serie' :imgError="imgError" :Divisione="Divisione" :posterError="posterError"/>
+            <Card :base_url="base_url" :img_size="img_size" :film='serie' :imgError="imgError" :Divisione="Divisione" :posterError="posterError" :title="serie.name" :original_title='serie.original_name'/>
           </li>
         </ul>
       </div>

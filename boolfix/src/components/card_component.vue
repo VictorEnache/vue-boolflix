@@ -8,12 +8,12 @@
                 />
               </div>
               <div class="informazioni">
-                <div class="titolo"><span>Titolo:</span> {{ film.title }}</div>
+                <div class="titolo"><span>Titolo:</span> {{title }}</div>
                 <div
                   class="titolo_originale"
                   v-if="film.title !== film.original_title"
                 >
-                  <span>Titolo Originale:</span> {{ film.original_title }}
+                  <span>Titolo Originale:</span> {{original_title }}
                 </div>
                 <div class="lingua">
                   <div class="lingua_image">
@@ -52,6 +52,6 @@
 export default {
     name: 'card_component',
 
-    props:['base_url','img_size','film','imgError','Divisione','posterError']
+    props:['base_url','img_size','film','imgError','Divisione','posterError','title', 'original_title']
 }
 </script>
