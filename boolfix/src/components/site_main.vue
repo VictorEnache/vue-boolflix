@@ -33,6 +33,7 @@
                 <img
                   :src="`${base_url}${img_size}${film.poster_path}`"
                   alt=""
+                  @error='posterError'
                 />
               </div>
               <div class="informazioni">
@@ -82,6 +83,7 @@
                 <img
                   :src="`${base_url}${img_size}${serie.poster_path}`"
                   alt=""
+                  @error='posterError'
                 />
               </div>
               <div class="informazioni">
@@ -115,7 +117,7 @@
                   />
                 </div>
                 <div class="overview">
-                  <span>Overview: </span>{{ film.overview }}
+                  <span>Overview: </span>{{ serie.overview }}
                 </div>
                 <!-- /.overview -->
               </div>
@@ -205,7 +207,11 @@ export default {
       event.target.src = require("../assets/img/flag_placeholder.png");
     },
 
-    posterError() {},
+    posterError(event) {
+        event.target.src = require("../assets/img/Movie_Placeholder.jpg");
+    }
+
+
   },
 
   mounted() {},
