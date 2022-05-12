@@ -7,16 +7,21 @@
         </div>
         <!-- /.logo -->
         <div class="search">
-          <input type="text" placeholder="Cerca" v-model="search" @keyup.enter="callApi" />
+          <input
+            type="text"
+            placeholder="Cerca"
+            v-model="search"
+            @keyup.enter="callApi"
+          />
           <button @click="callApi">cerca</button>
         </div>
         <!-- /.search -->
       </div>
     </header>
     <!-- /#site_header -->
-    <div class="placeholder" v-if='films.length === 0'>
-        <h2>NON SONO PRESENTI FILM O SERIE TV DA MOSTRARE</h2>
-        <h3>Utilizza la barra di ricerca in alto</h3>
+    <div class="placeholder" v-if="films.length === 0">
+      <h2>NON SONO PRESENTI FILM O SERIE TV DA MOSTRARE</h2>
+      <h3>Utilizza la barra di ricerca in alto</h3>
     </div>
     <!-- /.placeholder -->
     <main id="site_main">
@@ -31,18 +36,21 @@
                 />
               </div>
               <div class="informazioni">
-                <div class="titolo">
-                  <span>Titolo:</span> {{ film.title }}
-                </div>
-                <div class="titolo_originale" v-if='film.title !== film.original_title'>
-                  <span>Titolo Originale:</span>{{ film.original_title }}
+                <div class="titolo"><span>Titolo:</span> {{ film.title }}</div>
+                <div
+                  class="titolo_originale"
+                  v-if="film.title !== film.original_title"
+                >
+                  <span>Titolo Originale:</span> {{ film.original_title }}
                 </div>
                 <div class="lingua">
-                  <img
-                    :src="`https://countryflagsapi.com/png/${film.original_language}`"
-                    alt=""
-                    @error="imgError"
-                  />
+                  <div class="lingua_image">
+                    <img
+                      :src="`https://countryflagsapi.com/png/${film.original_language}`"
+                      alt=""
+                      @error="imgError"
+                    />
+                  </div>
                   <div class="text">{{ film.original_language }}</div>
                 </div>
                 <div class="voto">
@@ -72,18 +80,21 @@
                 />
               </div>
               <div class="informazioni">
-                <div class="titolo">
-                  <span>Titolo:</span>{{ serie.name }}
-                </div>
-                <div class="titolo_originale" v-if='serie.name !== serie.original_name'>
-                  <span>Titolo Originale:</span>{{ serie.original_name }}
+                <div class="titolo"><span>Titolo:</span> {{ serie.name }}</div>
+                <div
+                  class="titolo_originale"
+                  v-if="serie.name !== serie.original_name"
+                >
+                  <span>Titolo Originale:</span> {{ serie.original_name }}
                 </div>
                 <div class="lingua">
-                  <img
-                    :src="`https://countryflagsapi.com/png/${serie.original_language}`"
-                    alt=""
-                    @error="imgError"
-                  />
+                  <div class="lingua_image">
+                    <img
+                      :src="`https://countryflagsapi.com/png/${serie.original_language}`"
+                      alt=""
+                      @error="imgError"
+                    />
+                  </div>
                   <div class="text">{{ serie.original_language }}</div>
                 </div>
                 <div class="voto">
@@ -170,8 +181,8 @@ export default {
             );
           });
       } else {
-          this.films = [];
-          this.serie_tv = [];
+        this.films = [];
+        this.serie_tv = [];
       }
     },
 
@@ -183,6 +194,8 @@ export default {
     imgError(event) {
       event.target.src = require("../assets/img/flag_placeholder.png");
     },
+
+    posterError() {},
   },
 
   mounted() {},
