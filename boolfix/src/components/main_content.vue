@@ -7,102 +7,11 @@
       <div class="container">
         <ul class="row">
           <li :key="film.id" v-for="film in films" class="col">
-            <div class="card">
-              <div class="image">
-                <img
-                  :src="`${base_url}${img_size}${film.poster_path}`"
-                  alt=""
-                  @error='posterError'
-                />
-              </div>
-              <div class="informazioni">
-                <div class="titolo"><span>Titolo:</span> {{ film.title }}</div>
-                <div
-                  class="titolo_originale"
-                  v-if="film.title !== film.original_title"
-                >
-                  <span>Titolo Originale:</span> {{ film.original_title }}
-                </div>
-                <div class="lingua">
-                  <div class="lingua_image">
-                    <img
-                      :src="`https://countryflagsapi.com/png/${film.original_language}`"
-                      alt=""
-                      @error="imgError"
-                    />
-                  </div>
-                  <div class="text">{{ film.original_language }}</div>
-                </div>
-                <div class="voto">
-                  <!-- {{ Divisione(film.vote_average) }} -->
-                  <span>Voto: </span>
-                  <font-awesome-icon
-                    v-for="number in 5"
-                    :key="number"
-                    :icon="
-                      number <= Divisione(film.vote_average)
-                        ? ['fas', 'star']
-                        : ['far', 'star']
-                    "
-                  />
-                </div>
-                <div class="overview">
-                  <span>Overview: </span>{{ film.overview }}
-                </div>
-                <!-- /.overview -->
-              </div>
-              <!-- /.informazioni -->
-            </div>
-            <!-- /.card -->
+            <Card :base_url="base_url" :img_size="img_size" :film='film' :imgError="imgError" :Divisione="Divisione" :posterError="posterError"/>
           </li>
 
           <li :key="serie.id" v-for="serie in serie_tv" class="col">
-            <div class="card">
-              <div class="image">
-                <img
-                  :src="`${base_url}${img_size}${serie.poster_path}`"
-                  alt=""
-                  @error='posterError'
-                />
-              </div>
-              <div class="informazioni">
-                <div class="titolo"><span>Titolo:</span> {{ serie.name }}</div>
-                <div
-                  class="titolo_originale"
-                  v-if="serie.name !== serie.original_name"
-                >
-                  <span>Titolo Originale:</span> {{ serie.original_name }}
-                </div>
-                <div class="lingua">
-                  <div class="lingua_image">
-                    <img
-                      :src="`https://countryflagsapi.com/png/${serie.original_language}`"
-                      alt=""
-                      @error="imgError"
-                    />
-                  </div>
-                  <div class="text">{{ serie.original_language }}</div>
-                </div>
-                <div class="voto">
-                  <span>Voto: </span>
-                  <font-awesome-icon
-                    v-for="number in 5"
-                    :key="number"
-                    :icon="
-                      number <= Divisione(serie.vote_average)
-                        ? ['fas', 'star']
-                        : ['far', 'star']
-                    "
-                  />
-                </div>
-                <div class="overview">
-                  <span>Overview: </span>{{ serie.overview }}
-                </div>
-                <!-- /.overview -->
-              </div>
-              <!-- /.informazioni -->
-            </div>
-            <!-- /.card -->
+            <Card :base_url="base_url" :img_size="img_size" :film='serie' :imgError="imgError" :Divisione="Divisione" :posterError="posterError"/>
           </li>
         </ul>
       </div>
@@ -117,6 +26,7 @@
 import axios from "axios";
 import Header from './site_header.vue'
 import Placeholder from './site_placeholder.vue'
+import Card from './card_component.vue'
 
 
 export default {
@@ -124,7 +34,8 @@ export default {
 
   components:{
       Header,
-      Placeholder
+      Placeholder,
+      Card
   },
 
   data() {
