@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Main from './components/site_main.vue'
+import Main from './components/main_content.vue'
 
 export default {
   name: 'App',
