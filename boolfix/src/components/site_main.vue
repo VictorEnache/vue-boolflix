@@ -1,24 +1,6 @@
 <template>
   <div>
-    <header id="site_header">
-      <div class="container">
-        <div class="logo">
-          <div>BOOLFLIX</div>
-        </div>
-        <!-- /.logo -->
-        <div class="search">
-          <input
-            type="text"
-            placeholder="Cerca"
-            v-model="search"
-            @keyup.enter="callApi"
-          />
-          <button @click="callApi">cerca</button>
-        </div>
-        <!-- /.search -->
-      </div>
-    </header>
-    <!-- /#site_header -->
+    <Header :callApi='callApi' v-model="search"/>
     <div class="placeholder" v-if="films.length === 0">
       <h2>NON SONO PRESENTI FILM O SERIE TV DA MOSTRARE</h2>
       <h3>Utilizza la barra di ricerca in alto</h3>
@@ -136,9 +118,14 @@
 
 <script>
 import axios from "axios";
+import Header from './site_header.vue'
 
 export default {
   name: "site_main",
+
+  components:{
+      Header
+  },
 
   data() {
     return {
