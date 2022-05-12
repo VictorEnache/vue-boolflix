@@ -55,6 +55,7 @@
                 </div>
                 <div class="voto">
                   <!-- {{ Divisione(film.vote_average) }} -->
+                  <span>Voto: </span>
                   <font-awesome-icon
                     v-for="number in 5"
                     :key="number"
@@ -65,6 +66,10 @@
                     "
                   />
                 </div>
+                <div class="overview">
+                  <span>Overview: </span>{{ film.overview }}
+                </div>
+                <!-- /.overview -->
               </div>
               <!-- /.informazioni -->
             </div>
@@ -98,6 +103,7 @@
                   <div class="text">{{ serie.original_language }}</div>
                 </div>
                 <div class="voto">
+                  <span>Voto: </span>
                   <font-awesome-icon
                     v-for="number in 5"
                     :key="number"
@@ -108,6 +114,10 @@
                     "
                   />
                 </div>
+                <div class="overview">
+                  <span>Overview: </span>{{ film.overview }}
+                </div>
+                <!-- /.overview -->
               </div>
               <!-- /.informazioni -->
             </div>

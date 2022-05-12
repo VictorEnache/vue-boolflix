@@ -95,6 +95,7 @@ ul{
                     width: 100%;
                     position: relative;
                     
+                    
                     &:hover{
 
                         .image{
@@ -119,6 +120,8 @@ ul{
                         z-index: 10;
                         display: none;
                         font-size: 15px;
+                        height: 100%;
+                        overflow: auto;
 
                         span{
                             font-weight: 900;
